@@ -2,6 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:list_movie/HomePage.dart';
 
 class RegisterPage extends StatelessWidget {
+  Widget registrationField(String label, bool isObsecure) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      child: TextFormField(
+        obscureText: isObsecure,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: label,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,23 +26,10 @@ class RegisterPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Textfield Nama
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Nama'),
-              ),
-              SizedBox(height: 16),
-              // Textfield Email
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Email'),
-              ),
-              SizedBox(height: 16),
-              // Textfield Password
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Password'),
-                obscureText: true,
-              ),
-              SizedBox(height: 32),
-              // Tombol Daftar
+              registrationField("Nama", false),
+              registrationField("Email", false),
+              registrationField("Password", true),
+              registrationField("Konfirmasi Password", true),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -38,6 +38,11 @@ class RegisterPage extends StatelessWidget {
                   );
                 },
                 child: Text('Daftar'),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                ),
               ),
             ],
           ),

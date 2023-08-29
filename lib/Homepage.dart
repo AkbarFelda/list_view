@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       Spacer(),
-                      Icon(Icons.arrow_forward),
+                      Icon(Icons.info),
                     ],
                   ),
                 );

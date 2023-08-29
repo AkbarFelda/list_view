@@ -13,7 +13,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget login(String label, bool isObsecure){
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: TextField(
         obscureText: isObsecure,
         decoration: InputDecoration(
@@ -32,21 +32,25 @@ class _LoginPageState extends State<LoginPage> {
         child: Container(
           child: Column(
             children: [
-              //Textfield username
               login("Username", false),
-              //Textfield password
               login("Password", true),
-              SizedBox(height: 16), // Tambahkan jarak di antara tombol
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  //Elevated Button
-                  ElevatedButton(onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder:(context) => const HomePage()),
-                    );
-                  }, child: Text ('Login')),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder:(context) => const HomePage()),
+                      );
+                    },
+                    child: Text('Login'),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0), // Radius nol menghilangkan lekukan
+                      ),
+                    ),
+                  ),
                   SizedBox(width: 16),
                   ElevatedButton(
                     onPressed: () {
@@ -57,10 +61,14 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Text(
                       'Register',
-                      style: TextStyle(color: Colors.black), // Gunakan style yang sama
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0), // Radius nol menghilangkan lekukan
+                      ),
                     ),
                   )
-
                 ],
               )
             ],
